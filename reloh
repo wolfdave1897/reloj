@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+    <style>
+        .reloj {
+            font-size: 48px;
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+        #reloj-arg {
+            background-color: #ADD8E6; /* Azul celeste */
+        }
+        #reloj-mex {
+            background-color: #32CD32; /* Verde */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="reloj-arg" class="reloj"></div>
+    <div id="reloj-mex" class="reloj"></div>
+
+    <script>
+        function actualizarHora() {
+            const opcionesArgentina = { timeZone: 'America/Argentina/Cordoba', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const opcionesMexico = { timeZone: 'America/Mexico_City', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+            const horaArgentina = new Date().toLocaleTimeString('en-US', opcionesArgentina);
+            const horaMexico = new Date().toLocaleTimeString('en-US', opcionesMexico);
+
+            document.getElementById('reloj-arg').textContent = `Hora en Chaco, Argentina: ${horaArgentina}`;
+            document.getElementById('reloj-mex').textContent = `Hora en Ciudad de México: ${horaMexico}`;
+        }
+
+        // Actualizar los relojes cada segundo
+        setInterval(actualizarHora, 1000);
+
+        // Inicializar la función
+        actualizarHora();
+    </script>
+
+</body>
+</html>
